@@ -1,0 +1,91 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flower Animation</title>
+    <link rel="stylesheet" href="/css/tailwind.css" />
+    <style>
+      /* Clase base para el botón No */
+      .move-btn {
+        transition: transform 0.3s ease-in-out;
+      }
+      /* Clase para ocultar el gif inicialmente */
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-pink-200 flex items-center justify-center min-h-screen">
+    <div class="text-center">
+      <!-- Flor (contenedor) -->
+      <div id="flower-container" class="relative mx-auto w-32 h-48">
+        <!-- Pétalos -->
+        <div class="relative w-20 h-20 mx-auto">
+          <div class="absolute w-8 h-8 bg-yellow-300 rounded-full border border-black" style="top: -16px; left: 25px;"></div>
+          <div class="absolute w-8 h-8 bg-yellow-300 rounded-full border border-black" style="top: -4px; right: -1px;"></div>
+          <div class="absolute w-8 h-8 bg-yellow-300 rounded-full border border-black" style="top: -9px; left: 1px;"></div>
+          <div class="absolute w-8 h-8 bg-yellow-300 rounded-full border border-black" style="top: 33px; left: 24px;"></div>
+          <div class="absolute w-8 h-8 bg-yellow-300 rounded-full border border-black" style="top: 18px; left: -1px;"></div>
+          <div class="absolute w-8 h-8 bg-yellow-300 rounded-full border border-black" style="top: 20px; right: 0;"></div>
+          <div class="absolute w-12 h-12 bg-yellow-500 rounded-full border border-black" style="top: -1px; left: 14px;"></div>
+        </div>
+        <!-- Tallo con hojas -->
+        <div class="w-2 h-20 bg-green-500 mx-auto" style="margin-top: -18px;">
+          <!-- Hoja izquierda -->
+          <div class="absolute w-4 h-8 bg-green-500 rounded-full" style="top: 70px; left: 48px; transform: rotate(-45deg);"></div>
+          <!-- Hoja derecha -->
+          <div class="absolute w-4 h-8 bg-green-500 rounded-full" style="top: 70px; right: 48px; transform: rotate(45deg);"></div>
+        </div>
+        <!-- Maceta -->
+        <div class="relative w-16 h-12 bg-brown-600 mx-auto rotate-180 rounded-t-lg shadow-lg" style="margin-top: 10px; background-color: #8B4513;">
+        </div>
+
+        <div class="absolute w-20 h-5 bg-brown-500 left-1/2 transform -translate-x-1/2 rotate-180 rounded-b-md shadow-md" style="top: 140px; background-color: #A0522D;"></div>
+      </div>
+
+      <!-- Gif de la flor cuando se hace clic en Sí (inicialmente oculto) -->
+      <img id="flower-gif" src="2ull.gif" class="hidden absolute top-0 left-1/2 transform -translate-x-1/2" />
+
+      <!-- Texto -->
+      <p class="mt-6 font-serif italic text-lg font-semibold"> ¿Quieres salir conmigo? ❤️</p>
+
+      <!-- Botones de Sí y No -->
+      <div class="mt-6 flex justify-center space-x-4">
+        <!-- Botón Sí -->
+        <button id="btn-si" class="px-6 py-2 bg-green-400 text-white font-semibold rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">
+          Sí
+        </button>
+
+        <!-- Botón No -->
+        <button id="btn-no" class="move-btn px-6 py-2 bg-red-400 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
+          No
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Seleccionamos los botones y la flor
+      const btnNo = document.getElementById('btn-no');
+      const btnSi = document.getElementById('btn-si');
+      const flowerContainer = document.getElementById('flower-container');
+      const gif = document.getElementById('flower-gif');
+
+      // Añadimos un eventListener para el clic en el botón "No"
+      btnNo.addEventListener('click', () => {
+        // Generamos un valor aleatorio entre -50px y 50px para mover el botón "No"
+        const randomY = Math.floor(Math.random() * 101) - 50; // Genera un número entre -50 y 50
+        // Aplicamos el transform con el valor aleatorio
+        btnNo.style.transform = `translateY(${randomY}px)`;
+      });
+
+      // Añadimos un eventListener para el clic en el botón "Sí"
+      btnSi.addEventListener('click', () => {
+        // Ocultamos la flor
+        flowerContainer.style.display = 'none';
+        // Ocultamos el botón "No"
+        btnNo.style.display = 'none';
+        // Mostramos el gif
+        gif.classList.remove('hidden');
+      });
+    </script>
+  </body>
+</html>
