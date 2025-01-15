@@ -8,10 +8,6 @@
       .move-btn {
         transition: transform 0.3s ease-in-out;
       }
-      /* Clase para ocultar el gif inicialmente */
-      .hidden {
-        display: none;
-      }
     </style>
   </head>
   <body class="bg-pink-200 flex items-center justify-center min-h-screen">
@@ -42,11 +38,16 @@
         <div class="absolute w-20 h-5 bg-brown-500 left-1/2 transform -translate-x-1/2 rotate-180 rounded-b-md shadow-md" style="top: 140px; background-color: #A0522D;"></div>
       </div>
 
-      <!-- Gif de la flor cuando se hace clic en Sí (inicialmente oculto) -->
-      <img id="flower-gif" src="2ull.gif" class="hidden absolute top-0 left-1/2 transform -translate-x-1/2" />
+      <!-- Código del gif de Gatos Bailando -->
+      <div id="gatos-gif" class="hidden mt-6">
+        <div class="tenor-gif-embed" data-postid="24586149" data-share-method="host" data-aspect-ratio="0.7875" data-width="100%">
+          <a href="https://tenor.com/view/gatos-bailando-gato-gif-24586149">Gatos Bailando GIF</a> from <a href="https://tenor.com/search/gatos-gifs">Gatos GIFs</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      </div>
 
       <!-- Texto -->
-      <p class="mt-6 font-serif italic text-lg font-semibold"> ¿Quieres salir conmigo?   </p>
+      <p class="mt-6 font-serif italic text-lg font-semibold"> ¿Quieres salir conmigo? : ) </p>
 
       <!-- Botones de Sí y No -->
       <div class="mt-6 flex justify-center space-x-4">
@@ -67,7 +68,7 @@
       const btnNo = document.getElementById('btn-no');
       const btnSi = document.getElementById('btn-si');
       const flowerContainer = document.getElementById('flower-container');
-      const gif = document.getElementById('flower-gif');
+      const gatosGif = document.getElementById('gatos-gif');
 
       // Añadimos un eventListener para el clic en el botón "No"
       btnNo.addEventListener('click', () => {
@@ -84,7 +85,7 @@
         // Ocultamos el botón "No"
         btnNo.style.display = 'none';
         // Mostramos el gif
-        gif.classList.remove('hidden');
+        gatosGif.classList.remove('hidden');
       });
     </script>
   </body>
